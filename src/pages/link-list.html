@@ -1,0 +1,55 @@
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h1>Max Krawiec's PHANTOM task</h1>
+          <form class="form-inline" ng-submit="addLink()">
+            <div class="form-group">
+              <label for="input-url" class="sr-only">Input URL</label>
+              <input type="url" class="form-control" id="input-url" placeholder="Input bookmark's URL" ng-model="addNewLink">
+              <!-- <div ng-messages="exists">This link already exists.</div> -->
+            </div>
+            <button type="submitn" class="btn btn-phantom">add</button>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="separator"></div>
+          <h2>Saved Bookmarks</h2>
+          <ul>
+            <li class="link-list" ng-class="{ 'edit': edit }" ng-repeat="link in links | startFrom:currentPage*numPerPage | limitTo:numPerPage">
+              <div class="row">
+                <div class="col-12 col-sm-8 col-md-9 col-lg-10">
+                  <a href="{{link.url}}" target="_blank">{{link.url}}</a>
+                  <input type="url" class="form-control edit-url" ng-model="link.url">
+                </div>
+                <div class="col-6 col-sm-2 col-md-1 col-lg-1">
+                  <button class="btn btn-phantom" ng-class="{ 'edit': edit }" ng-click="edit = !edit">edit</button>
+                  <button class="btn btn-phantom save" ng-class="{ 'edit': edit }" ng-click="edit = !edit; editLink(link)">save</button>
+                </div>
+                <div class="col-6 col-sm-2 col-md-2 col-lg-1">
+                  <button class="btn btn-phantom" ng-click="deleteLink(link)">delete</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row pagination">
+        <div class="col-2">
+          <button class="btn btn-phantom" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1"><</button>
+        </div>
+        <div class="col-8 text-center">
+          <ul>
+            <li ng-repeat="page in pages(totalPages) track by $index">
+              <div class="page" ng-class="currentPage=={{$index}} ? 'active' : ''" ng-click="goToPage(page)">{{$index+1}}</div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-2 text-right">
+          <button class="btn btn-phantom" ng-disabled="currentPage >= totalPages-1" ng-click="currentPage=currentPage+1">></button>
+        </div>
+      </div>
+
+    </div>
