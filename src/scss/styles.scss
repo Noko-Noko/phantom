@@ -66,10 +66,12 @@ ul {
   padding: 0;
   .link-list {
     position: relative;
+    margin-bottom: 10px;
     a,
     .edit-url {
       display: inline-block;
       width: 100%;
+      word-break: break-all;
     }
     .edit-url {
       display: none;
@@ -110,6 +112,7 @@ ul {
 // PAGINATION
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 .pagination {
+  margin: 20px 0 40px 0;
   ul {
     list-style: none;
     padding: 0;

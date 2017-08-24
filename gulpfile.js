@@ -64,7 +64,7 @@ gulp.task('browserSync', function() {
 
 gulp.task('html', function() {
     return gulp
-        .src('src/pages/*.html') // Gets all files HTML files
+        .src(['src/pages/*.html', 'src/partials/*.html' ]) // Gets all files HTML files
         .pipe(gulp.dest('dist/')) // Outputs it in the dist folder
         .pipe(browserSync.stream()); // Reloading with Browser Sync
 })

@@ -51,11 +51,11 @@ angular.module('phantomApp', ['ngRoute','ngMessages'])
 
     $scope.links = [];
     $scope.currentPage = $scope.currentPage || 0;
-    $scope.numPerPage = 10;
+    $scope.numPerPage = 20;
     $scope.pages = 0;
     $scope.totalPages = 1;
-
-
+ 
+    // Grab and use a JSON file as the default link's database
     var localLinks = localStorage['linkList'];
     var promise = PhantomService.getData();
     promise.then(function(data){
@@ -128,6 +128,7 @@ angular.module('phantomApp', ['ngRoute','ngMessages'])
   })
 
   .controller('AddedController', function($scope, PhantomService, NewLinkService, $filter, $routeParams, $location) {
+    // get the new link url from the previous controller
     $scope.newlink = NewLinkService.getNewLink();
 
     $scope.goBack = function() {
